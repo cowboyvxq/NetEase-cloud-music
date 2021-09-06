@@ -1,15 +1,15 @@
 <template>
-  <div class="search" @scroll="$emit('loadMore',$event)">
+  <div class="search" @scroll="$emit('loadMore', $event)">
     <ul>
       <li
-        v-for="(item,index) in searchResults"
+        v-for="(item, index) in searchResults"
         :key="index"
         @click.stop="$emit('changeCurrent', item)"
       >
         <div class="content">
-          <!-- <em v-if="item.privilege.maxbr == 999000"></em> -->
           <p class="music-name">{{ item.name }}</p>
           <div class="tream">
+          <em v-if="item.fee == 8"></em>
             <span
               class="artist"
               v-for="artist in item.artists"
@@ -45,8 +45,7 @@ export default {
     },
     playing: Boolean,
   },
-  components: {
-  },
+  components: {},
   data() {
     return {};
   },
@@ -59,7 +58,7 @@ export default {
   width: 100%;
   padding: 10px 15px;
   box-sizing: border-box;
-  overflow:auto;
+  overflow: auto;
   position: absolute;
   top: 185px;
   left: 0;
@@ -77,17 +76,25 @@ export default {
         width: 90%;
         padding-right: 20px;
         box-sizing: border-box;
+        em {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background: url("https://s3.music.126.net/mobile-new/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880=")
+            no-repeat 5px 6px;
+          background-size: 166px 97px;
+        }
         .music-name {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          
         }
         .tream {
           display: flex;
           white-space: nowrap;
           overflow: hidden;
           font-size: 12px;
+          align-items: center;
           .artist {
             color: #888888;
             &:after {

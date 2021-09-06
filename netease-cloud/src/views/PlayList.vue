@@ -90,8 +90,7 @@ export default {
         })
         .then((res) => {
           this.detail = res.data.playlist;
-          // console.log(this.detail.creator);
-          console.log(res);
+          console.log(res.data);
         });
     },
   },
@@ -150,7 +149,7 @@ export default {
         text-align: right;
         z-index: 12;
         color: #fff;
-        background: url(../../dist/img/music-logo.svg) no-repeat left center;
+        // background: url(../../dist/img/music-logo.svg) no-repeat left center;
         background-size: 15px 15px;
         padding-left: 20px;
         font-size: 14px;

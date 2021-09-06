@@ -1,8 +1,6 @@
 <template>
   <!-- 利用v-show进行显示隐藏，由于切换过于频繁这里不能用v-if  -->
-  <div class="controls " 
-  @click='$emit("showPlay")' 
-   >
+  <div class="controls" @click="$emit('showPlay')">
     <div class="head-portrait">
       <img
         :class="{ sport: playing }"
@@ -28,7 +26,10 @@
       </div>
       <div class="play-btn">
         <!-- <button>播放</button> -->
-        <div class="progress" @click.stop="$emit('play-state', currentSong.name)">
+        <div
+          class="progress"
+          @click.stop="$emit('play-state', currentSong.name)"
+        >
           <canvas ref="canvas" width="50" height="50"></canvas>
           <div class="play-icon" :class="[playing ? 'pause' : 'play']"></div>
         </div>
@@ -63,13 +64,14 @@
       <div class="card animate__animated animate__slideInUp">
         <ul class="list">
           <NewestList
-            v-for="item in playList"
+            v-for="(item, index) in playList"
             :key="item.id"
             :item="item"
             :currentSongId="currentSong.id"
             :playing="playing"
             @changeCurrent="$emit('changeCurrentSong', item)"
-          ></NewestList>
+            >{{ (index + 1).toString().padStart(2, "0") }}</NewestList
+          >
         </ul>
       </div>
     </div>
@@ -121,7 +123,7 @@ export default {
       cxt.stroke();
       cxt.beginPath();
       cxt.lineWidth = 2;
-      cxt.strokeStyle = "#ccc";
+      cxt.strokeStyle = "#fff";
       cxt.arc(
         25,
         25,
@@ -146,7 +148,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  background: url("../../dist/img/controls-bg.png") no-repeat;
+  background: rgb(37, 30, 30) url("../assets/control-bg.png") no-repeat;
   background-size: 100% 55px;
   z-index: 90;
   padding: 0 10px;

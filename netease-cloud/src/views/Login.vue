@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="logo">
-      <img src="../../dist/img/wyy.logo.jpg" alt="" />
+      <!-- <img src="../../dist/img/wyy.logo.jpg" alt="" /> -->
     </div>
     <div class="box">
       <input

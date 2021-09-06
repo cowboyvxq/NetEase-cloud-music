@@ -1,6 +1,10 @@
 <template>
   <!-- 热歌榜 -->
-  <div class="wrapper animate__animated animate__fadeInUp">
+  <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeDown"
+      >
+  <div class="wrapper">
     <div class="hotMusic-hd">
       <div class="headline">
         <div class="hot-text"></div>
@@ -23,6 +27,7 @@
       </NewestList>
     </ul>
   </div>
+  </transition>
 </template>
 
 <script>
@@ -116,7 +121,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .hotMusic-hd {
-  background: url("../../dist/img/hot_music_bg_3x.jpg") no-repeat;
+  background: url("../assets/hot_music_bg_2x.jpg") no-repeat;
   background-size: 100%;
   .headline {
     padding: 25px;
@@ -132,7 +137,7 @@ export default {
     .hot-text {
       height: 74px;
       width: 142px;
-      background: url("../../dist/img/index_icon_2x.png") no-repeat -23px -29px;
+      background: url("../assets/index_icon_2x.png") no-repeat -23px -29px;
       background-size: 166px 97px;
     }
   }

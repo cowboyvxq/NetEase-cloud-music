@@ -40,7 +40,7 @@
     <div class="left">
       <div class="song-name">{{ item.name }}</div>
       <div class="info">
-        <!-- <em v-if="item.song.privilege.maxbr == 999000"></em> -->
+        <em v-if="item.fee == 8"></em>
         <i v-for="artist in item.ar" :key="artist.id" class="artist">
           {{ artist.name }}
         </i>
@@ -93,7 +93,7 @@ export default {
   border: #e6e6e6 solid 1px;
   box-sizing: border-box;
   .sequence {
-    width: 20px;
+    width: 15px;
   }
   &:nth-child(1) {
     .sequence {
@@ -121,8 +121,11 @@ export default {
     .song-name {
       font-size: 17px;
       color: #666;
+      margin-top: 10px;
     }
     .info {
+      line-height: 24px;
+      margin-top: -6px;
       .conceal();
       em {
         display: inline-block;

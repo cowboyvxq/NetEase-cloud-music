@@ -31,7 +31,7 @@
         "
       ></NewestList>
     </ul>
-    <div class="ftwrap">
+    <!-- <div class="ftwrap">
       <svg
         class="logosvg"
         viewBox="0 0 1238 231"
@@ -171,7 +171,7 @@
       </svg>
       <div class="open-app">打开APP,发现更多好音乐></div>
       <p class="copy">网易公司版权所有©1997-2021 杭州乐读科技有限公司运营</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -230,6 +230,7 @@ export default {
   padding-left: 9px;
   border-left: solid red 2px;
   margin: 14px 0 9px;
+  color: #f80994;
 }
 
 ul.edit-list {
@@ -254,7 +255,7 @@ ul.edit-list li .heat {
   text-align: right;
   z-index: 12;
   color: #fff;
-  background: url(../../dist/img/music-logo.svg) no-repeat left center;
+  /* background: url(../../dist/img/music-logo.svg) no-repeat left center; */
   background-size: 15px 15px;
   padding-left: 20px;
   font-size: 14px;
@@ -291,7 +292,7 @@ ul.edit-list li .caption {
 
 .ftwrap {
   height: 200px;
-  background: #fff url(../../dist/img/home_bg_2x.png) no-repeat;
+  /* background: #fff url(../../dist/img/home_bg_2x.png) no-repeat; */
   padding-top: 40px;
 }
 

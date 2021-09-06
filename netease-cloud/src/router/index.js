@@ -12,7 +12,7 @@ import PlayList from "../views/PlayList.vue";
 // 搜索结果页面
 import SearchSongList from "../views/SearchSongList.vue";
 // 登录页面
-import Login from "../views/Login.vue";
+// import Login from "../views/Login.vue";
 // 首页MV入口组件
 import MusicMv from "../components/musicMv.vue";
 
@@ -20,17 +20,17 @@ Vue.use(VueRouter);
 
 const routes = [
   // 定义一个重定向，默认为登录页面
-  { path: "/", redirect: "/login" },
+  { path: "/", redirect: "/home" },
   {
     path: "/musicmv",
     name: "musicmv",
     component: MusicMv,
   },
-  {
-    path: "/login",
-    name: "login",
-    component: Login,
-  },
+  // {
+  //   path: "/login",
+  //   name: "login",
+  //   component: Login,
+  // },
   {
     path: "/home",
     name: "Home",
@@ -65,17 +65,17 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, form, next) => {
-  if (to.path === "/home") {
-    const token = localStorage.getItem("token");
-    if (token) {
-      next();
-    } else {
-      next("/login");
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, form, next) => {
+//   if (to.path === "/home") {
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       next();
+//     } else {
+//       next("/login");
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;

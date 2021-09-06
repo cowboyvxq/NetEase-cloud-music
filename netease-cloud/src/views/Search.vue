@@ -1,15 +1,33 @@
 <template>
   <div class="search">
     <div class="search-box">
-      <input
-        type="search"
-        placeholder="搜索歌手、歌曲、专辑"
-        v-model.trim="val"
-        @keyup.enter="val && (shows = true)"
-        @click="getSearch"
-        @focus="inputing = true"
-        @blur="inputing = false"
-      />
+      <div class="tops">
+        <svg
+          t="1630917017394"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="3008"
+          width="20"
+          height="20"
+        >
+          <path
+            d="M443.072 68.821333c206.144 0 373.290667 167.146667 373.290667 373.333334 0 95.637333-35.968 182.890667-95.104 248.96l221.824 221.802666-30.165334 30.165334-221.866666-221.866667a371.882667 371.882667 0 0 1-247.978667 94.293333c-206.208 0-373.376-167.168-373.376-373.354666 0-206.186667 167.168-373.333333 373.376-373.333334z m0 42.666667c-182.656 0-330.709333 148.053333-330.709333 330.666667 0 182.613333 148.053333 330.666667 330.709333 330.666666 182.592 0 330.624-148.053333 330.624-330.666666 0-182.613333-148.053333-330.666667-330.624-330.666667z"
+            p-id="3009"
+            fill="#bfbfbf"
+          ></path>
+        </svg>
+        <input
+          type="search"
+          placeholder="搜索歌手、歌曲、专辑"
+          v-model.trim="val"
+          @keyup.enter="val && (shows = true)"
+          @click="getSearch"
+          @focus="inputing = true"
+          @blur="inputing = false"
+        />
+      </div>
     </div>
     <div class="keyword" v-if="!shows">
       <div class="suggests" v-show="!val && !flag">
@@ -33,7 +51,7 @@
           <svg
             @click="removeAll"
             t="1630309775152"
-            class="icon"
+            class="del-icon"
             viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +93,7 @@
               <span class="item-text">{{ item }}</span>
             </span>
             <svg
+              @click="delPresent(index)"
               xmlns="http://www.w3.org/2000/svg"
               width="25"
               height="25"
@@ -201,30 +220,36 @@ export default {
           this.searchResults.push(...res.data.result.songs);
           this.page++;
           this.hasMore = res.data.result.hasMore;
+          console.log(res.data);
         });
 
       // 记录一下
-      this.searchHistoryArr = [
-        ...new Set([this.val, ...this.searchHistoryArr]),
-      ];
-      window.localStorage.setItem(
-        "history",
-        JSON.stringify(this.searchHistoryArr)
-      );
-      for(let i = 0;i < this.searchHistoryArr.length;i++) {
-        if(this.searchHistoryArr[i] == '') 
-        this.searchHistoryArr.splice(i,1);
+      if (this.shows) {
+        this.searchHistoryArr = [
+          ...new Set([this.val, ...this.searchHistoryArr]),
+        ];
+        window.localStorage.setItem(
+          "history",
+          JSON.stringify(this.searchHistoryArr)
+        );
+      }
+      for (let i = 0; i < this.searchHistoryArr.length; i++) {
+        if (this.searchHistoryArr[i] == "") this.searchHistoryArr.splice(i, 1);
       }
     },
 
     // 删除所有的历史记录
     removeAll() {
-      console.log(222);
       localStorage.clear();
       this.searchHistoryArr = "";
     },
 
     // 删除当前历史记录
+    delPresent(index) {
+      const temp = this.searchHistoryArr;
+      temp.splice(index, 1);
+      localStorage.setItem("history", JSON.stringify(temp));
+    },
   },
   watch: {
     // 监听输入框的内容
@@ -238,13 +263,12 @@ export default {
         this.page = 0;
       } else {
         this.flag = true;
+        this.searchResults = [];
       }
     },
     shows: function (n) {
       if (n && this.val) {
         this.getSearch();
-      } else {
-        this.searchResults = [];
       }
     },
   },
@@ -256,19 +280,29 @@ export default {
     padding: 15px 10px;
     box-sizing: border-box;
     border-bottom: solid #f2f3f4 1px;
-    input {
-      width: 100%;
+    border-radius: 20px;
+    .tops {
       height: 35px;
-      line-height: 35px;
-      border-radius: 20px;
-      border: none;
-      padding-left: 30px;
-      box-sizing: border-box;
-      outline: none;
-      color: #333;
-      background: #ebecec url(../../dist/img/search.svg) no-repeat 10px;
-      background-size: 15px 15px;
-      padding-right: 20px;
+      position: relative;
+      input {
+        height: 100%;
+        width: 100%;
+        line-height: 35px;
+        border-radius: 20px;
+        border: none;
+        padding-left: 30px;
+        box-sizing: border-box;
+        outline: none;
+        color: #333;
+        background-size: 15px 15px;
+        padding-right: 20px;
+        background-color: #ebecec;
+      }
+      svg {
+        position: absolute;
+        left: 7px;
+        top: 8px;
+      }
     }
   }
   .keyword {
