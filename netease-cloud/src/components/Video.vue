@@ -1,5 +1,6 @@
 <template>
   <div class="video">
+    
     <p class="v-title">
       <span>热门视频</span>
     </p>
@@ -23,6 +24,20 @@
     >
     <div class="v-mask" @click="flsh=false" v-if="flsh">
       <video :src="vUrl" autoplay controls></video>
+      <svg
+          @click="$router.go(-1)"
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="#ccc"
+          class="bi bi-chevron-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
     </div>
     </transition>
   </div>
@@ -62,6 +77,11 @@ export default {
 
 <style lang='less'>
 .video {
+  .goback {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
   .v-title {
     height: 50px;
     line-height: 50px;
@@ -128,7 +148,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 339;
     video {
       width: 100%;
@@ -140,6 +160,11 @@ export default {
       left: 0;
       margin: auto;
       z-index: 3;
+    }
+    svg {
+      position: absolute;
+      top: 10px;
+      left: 10px;
     }
   }
 }

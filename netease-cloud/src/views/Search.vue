@@ -191,8 +191,6 @@ export default {
 
     // 滚动加载更多数据
     loadMore(event) {
-      console.log(event.target.scrollTop);
-      console.log(event.target.offsetHeight);
       let scrollHeight = Math.floor(
         event.target.offsetHeight + event.target.scrollTop
       );
@@ -201,9 +199,7 @@ export default {
         if (scrollHeight === goalHeight) {
           this.getSearch();
         }
-      } else {
-        console.log("222");
-      }
+      }  
     },
     // 搜索结果
     getSearch: function () {
@@ -216,11 +212,10 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res);
           this.searchResults.push(...res.data.result.songs);
           this.page++;
           this.hasMore = res.data.result.hasMore;
-          console.log(res.data);
+          // console.log(res.data);
         });
 
       // 记录一下

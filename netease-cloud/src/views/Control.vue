@@ -5,7 +5,11 @@
       <img
         :class="{ sport: playing }"
         :src="`${
-          currentSong.song ? currentSong.picUrl : currentSong.al.picUrl
+          currentSong.song
+            ? currentSong.picUrl
+            : currentSong.al
+            ? currentSong.al.picUrl
+            : currentSong.album.artist.img1v1Url
         }`"
         alt=""
       />
@@ -19,7 +23,9 @@
             {{
               currentSong.song
                 ? currentSong.song.artists[0].name
-                : currentSong.ar[0].name
+                :currentSong.al
+                ? currentSong.ar[0].name
+                : currentSong.artists[0].name
             }}
           </span>
         </div>

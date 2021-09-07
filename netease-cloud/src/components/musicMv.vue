@@ -29,23 +29,28 @@
       </div>
       <div class="mv-name">{{ item.name }}</div>
     </div>
-    <div class="mv-mask" @click="flag=false" v-if="flag">
-      <svg
-        @click="$router.go(-1)"
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        fill="#ccc"
-        class="bi bi-chevron-left"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-        />
-      </svg>
-      <video :src="mvUrl" autoplay controls></video>
-    </div>
+    <transition
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
+      <div class="mv-mask" @click="flag = false" v-if="flag">
+        <svg
+          @click="$router.go(-1)"
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="#ccc"
+          class="bi bi-chevron-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+        <video :src="mvUrl" autoplay controls></video>
+      </div>
+    </transition>
   </div>
 </template>
 

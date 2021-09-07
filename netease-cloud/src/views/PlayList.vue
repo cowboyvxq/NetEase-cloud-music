@@ -6,7 +6,7 @@
       xmlns="http://www.w3.org/2000/svg"
       width="25"
       height="25"
-      fill="#ccc"
+      fill="#666"
       class="left-arrow"
       viewBox="0 0 16 16"
     >
@@ -45,9 +45,7 @@
         >{{ (index + 1).toString().padStart(2, "0") }}</NewestList
       >
     </ul>
-    <PlayListRemark
-    :currentSongId='currentSongId'
-    ></PlayListRemark>
+    <PlayListRemark :currentSongId="currentSongId"></PlayListRemark>
   </div>
 </template>
 
@@ -106,7 +104,7 @@ export default {
     position: absolute;
     top: 6px;
     left: 0px;
-    z-index: 10;
+    z-index: 100;
     &::before {
       content: "";
       position: absolute;
@@ -139,6 +137,25 @@ export default {
       img {
         width: 100%;
         height: 100%;
+      }
+      &::after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 20px;
+        z-index: 2;
+        background-image: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0)
+        );
+        background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0)
+        );
       }
       .heat {
         height: 25px;
@@ -180,7 +197,7 @@ export default {
         }
         .avatar-text {
           font-size: 15px;
-          color: rgb(199, 187, 187);
+          color: #e2e1e1;
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
