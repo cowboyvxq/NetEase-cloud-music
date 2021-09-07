@@ -104,7 +104,7 @@
           </svg>
           <!-- <div class="download">下载APP</div> -->
           <!-- <router-link to='/musicmv'>musicMv</router-link> -->
-         <!-- <svg t="1630254030492" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12927" width="32" height="32"><path d="M663.7 586.7L437 456.3c-6.1-3.4-13.6-5.4-20.4-5.4h-0.7c-10.9 0-20.4 4.8-28.5 12.2-7.5 7.5-12.2 18.3-12.2 29.2l1.4 239c0 6.1 1.4 12.2 4.1 17.7 6.8 14.3 21 23.1 37.3 23.1 6.1 0 12.2-1.4 17.7-4.1L661 658.6c7.5-3.4 13.6-9.5 17.7-16.3 5.4-9.5 6.8-20.4 4.1-31.2-2.8-10.2-9.6-19-19.1-24.4zM438.3 698l-0.7-169 160.2 92.3L438.3 698z" p-id="12928" fill="#d4237a"></path><path d="M860.6 216.7H720.8l60.4-120.8 0.7-1.4c6.8-14.9 0-32.6-14.3-40.1-4.1-2-8.8-3.4-14.3-3.4-11.5 0-22.4 6.8-27.8 17l-74.7 148.7H377.9L299.8 63.9c-5.4-10.9-16.3-17-27.8-17-4.8 0-9.5 1.4-13.6 3.4-15.6 7.5-21.7 26.5-13.6 41.4l63.8 124.9h-146c-83.4 0.1-150.6 68-150.6 150.8v458.9C12 909.8 79.9 977 162.7 977h698.6c83.5 0 150.7-67.9 150.7-150.7V367.4c-0.7-82.8-67.9-150.7-151.4-150.7zM949.5 827c0 48.9-40.1 88.9-88.9 88.9H162c-48.9 0-88.9-40.1-88.9-88.9V367.4c0-48.9 40.1-88.9 88.9-88.9h698.5c48.9 0 88.9 40.1 88.9 88.9l0.1 459.6z" p-id="12929" fill="#d4237a"></path></svg> -->
+          <!-- <svg t="1630254030492" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12927" width="32" height="32"><path d="M663.7 586.7L437 456.3c-6.1-3.4-13.6-5.4-20.4-5.4h-0.7c-10.9 0-20.4 4.8-28.5 12.2-7.5 7.5-12.2 18.3-12.2 29.2l1.4 239c0 6.1 1.4 12.2 4.1 17.7 6.8 14.3 21 23.1 37.3 23.1 6.1 0 12.2-1.4 17.7-4.1L661 658.6c7.5-3.4 13.6-9.5 17.7-16.3 5.4-9.5 6.8-20.4 4.1-31.2-2.8-10.2-9.6-19-19.1-24.4zM438.3 698l-0.7-169 160.2 92.3L438.3 698z" p-id="12928" fill="#d4237a"></path><path d="M860.6 216.7H720.8l60.4-120.8 0.7-1.4c6.8-14.9 0-32.6-14.3-40.1-4.1-2-8.8-3.4-14.3-3.4-11.5 0-22.4 6.8-27.8 17l-74.7 148.7H377.9L299.8 63.9c-5.4-10.9-16.3-17-27.8-17-4.8 0-9.5 1.4-13.6 3.4-15.6 7.5-21.7 26.5-13.6 41.4l63.8 124.9h-146c-83.4 0.1-150.6 68-150.6 150.8v458.9C12 909.8 79.9 977 162.7 977h698.6c83.5 0 150.7-67.9 150.7-150.7V367.4c-0.7-82.8-67.9-150.7-151.4-150.7zM949.5 827c0 48.9-40.1 88.9-88.9 88.9H162c-48.9 0-88.9-40.1-88.9-88.9V367.4c0-48.9 40.1-88.9 88.9-88.9h698.5c48.9 0 88.9 40.1 88.9 88.9l0.1 459.6z" p-id="12929" fill="#d4237a"></path></svg> -->
         </div>
         <div class="home-nav">
           <router-link to="/home" class="">推荐音乐</router-link>
@@ -132,6 +132,7 @@
       @timeupdate="timeupdate"
       @durationchange="durationChange"
       ref="audio"
+      @canplay="getDuration"
     ></audio>
     <transition
       name="custom-classes-transition"
@@ -153,18 +154,20 @@
     <PlayPage
       v-if="currentSong"
       :showPlayPage="showPlayPage"
-      @closer="showPlayPage = false"
       :currentSong="currentSong"
-      @playMode="playMode"
-      @playPause="mpPaused"
-      @prevSong="prevSong"
-      @nextSong="nextSong"
+      :currentTime="currentTime"
       :playing="playing"
+      :playList="playList"
+      :total="total"
+      :curTime="curTime"
+      :duration="duration"
+      @nextSong="nextSong"
+      @prevSong="prevSong"
+      @playPause="mpPaused"
       @playingStatus="playingStatus"
-      :playList='playList'
-       @changeCurrentSong="changeCurrentSong"
-       :currentTime='currentTime'
-       :duration="duration"
+      @closer="showPlayPage = false"
+      @changeCurrentSong="changeCurrentSong"
+      @current-time-change="$refs.audio.currentTime = $event"
     ></PlayPage>
   </div>
 </template>
@@ -189,7 +192,14 @@ export default {
       duration: 0,
       playList: [],
       showPlayPage: false,
+      // 总时长
+      total: "00:00",
+      // 当前播放的时间
+      curTime: "00:00",
     };
+  },
+  mounted() {
+    this.nextSong();
   },
   // 页面刷新时回到首页
   //   此处用created而不用mounted的原因如下
@@ -210,12 +220,11 @@ export default {
         return null;
       }
     },
-    
   },
   methods: {
     changeCurrentSong(song) {
       this.currentSong = song;
-      console.log(this.currentSong);
+      // console.log(this.currentSong);
     },
     changePlayList(singe) {
       this.playList = singe;
@@ -228,7 +237,12 @@ export default {
       }
     },
     timeupdate(e) {
+      const playTime = Math.ceil(this.currentTime);
+      if(playTime >= this.duration) {
+        this.nextSong();
+      }
       this.currentTime = e.target.currentTime;
+      this.curTime = e.target.currentTime;
     },
     durationChange(e) {
       this.duration = e.target.duration;
@@ -264,8 +278,31 @@ export default {
       indexes = indexes < 0 ? this.playList.length - 1 : indexes;
       this.changeCurrentSong(this.playList[indexes]);
     },
-    playMode() {
-      console.log(45);
+
+    // 格式化总时长
+    getDuration() {
+      // canplay时获取音频总时长
+      this.duration = this.$refs.audio.duration;
+      this.total = this.formatTime(this.$refs.audio.duration);
+    },
+    formatTime(time) {
+      if (time === 0) {
+        this.curTime = "00:00";
+        return;
+      }
+      if (time === this.currentTime) {
+        this.curTime = "00:00";
+        return;
+      }
+      const mins =
+        Math.floor(time / 60) < 10
+          ? `0${Math.floor(time / 60)}`
+          : Math.floor(time / 60);
+      const sec =
+        Math.floor(time % 60) < 10
+          ? `0${Math.floor(time % 60)}`
+          : Math.floor(time % 60);
+      return `${mins}:${sec}`;
     },
   },
   watch: {},

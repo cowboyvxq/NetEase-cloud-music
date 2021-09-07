@@ -26,8 +26,8 @@
         :currentId="currentSongId"
         :playing="playing"
         @changeCurrent="
-        $emit('changeCurrentSong', $event)
-        $emit('change-play-list',newRes)
+          $emit('changeCurrentSong', $event);
+          $emit('change-play-list', newRes);
         "
       ></NewestList>
     </ul>
@@ -215,7 +215,7 @@ export default {
       .get("http://apis.netstart.cn/music/personalized/newsong")
       .then((res) => {
         this.newRes = res.data.result;
-        console.log(res.data.result);
+        // console.log(res.data.result);
       });
   },
   methods: {},
@@ -269,6 +269,26 @@ ul.edit-list li .heat {
 }
 ul.edit-list li .pic {
   height: 135px;
+}
+
+ul.edit-list li .pic::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  z-index: 2;
+  background-image: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0)
+  );
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0)
+  );
 }
 
 ul.edit-list li .pic img {

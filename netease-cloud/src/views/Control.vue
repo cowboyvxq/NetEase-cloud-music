@@ -148,7 +148,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  background: rgb(37, 30, 30) url("../assets/control-bg.png") no-repeat;
+  background: rgb(37, 30, 30) url("../assets/controls-bg.jpg") no-repeat;
   background-size: 100% 55px;
   z-index: 90;
   padding: 0 10px;
@@ -175,7 +175,7 @@ export default {
     padding-left: 20px;
     display: flex;
     .music-name {
-      width: 130px;
+      width: 160px;
       height: 50px;
       line-height: 50px;
       white-space: nowrap;

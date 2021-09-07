@@ -9,7 +9,7 @@
         <div class="content">
           <p class="music-name">{{ item.name }}</p>
           <div class="tream">
-          <em v-if="item.fee == 8"></em>
+            <em v-if="item.fee == 8"></em>
             <span
               class="artist"
               v-for="artist in item.artists"
