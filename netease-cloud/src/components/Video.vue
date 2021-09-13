@@ -45,6 +45,9 @@
 
 <script>
 export default {
+  props:{
+    state:String
+  },
   data() {
     return {
       vlist: [],
@@ -69,6 +72,7 @@ export default {
         .then((res) => {
           this.vUrl = res.data.data.url;
           this.flsh = true;
+          this.state.pause();
         });
     },
   },

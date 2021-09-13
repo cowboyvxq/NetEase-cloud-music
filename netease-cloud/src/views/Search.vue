@@ -199,8 +199,9 @@ export default {
         if (scrollHeight === goalHeight) {
           this.getSearch();
         }
-      }  
+      }
     },
+
     // 搜索结果
     getSearch: function () {
       this.axios
@@ -231,6 +232,11 @@ export default {
       for (let i = 0; i < this.searchHistoryArr.length; i++) {
         if (this.searchHistoryArr[i] == "") this.searchHistoryArr.splice(i, 1);
       }
+    },
+    inputSearch(val) {
+      this.val = val;
+      this.getSearch();
+      this.shows = true;
     },
 
     // 删除所有的历史记录

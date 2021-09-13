@@ -71,7 +71,7 @@ export default {
       .get("http://apis.netstart.cn/music/mv/exclusive/rcmd")
       .then((res) => {
         this.mvlists = res.data.data;
-        console.log(this.mvlists);
+        // console.log(this.mvlists);
       });
   },
   methods: {
@@ -85,7 +85,7 @@ export default {
         })
         .then((res) => {
           this.mvUrl = res.data.data.url;
-          console.log(this.mvUrl);
+          // console.log(this.mvUrl);
           this.flag = true;
         });
     },

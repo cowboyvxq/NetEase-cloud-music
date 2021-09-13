@@ -94,7 +94,21 @@ export default {
 </script>
 
 <style lang='less'>
+@media (max-height: 667px) {
+  .single-comment {
+    width: 94vw;
+    height: 80vh;
+    position: absolute;
+    bottom: -500px !important;
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 700;
+    transition: all 1s ease;
+    box-shadow: 5px 5px 15px #ccc, -5px -5px 15px #ccc;
+  }
+}
 .root {
+  z-index: 999;
   .com-mask {
     height: 100vh;
     width: 100vw;
@@ -103,6 +117,7 @@ export default {
     left: 0;
     background: rgba(20, 20, 50, 0.7);
   }
+
   .single-comment {
     width: 94vw;
     height: 80vh;
@@ -112,8 +127,7 @@ export default {
     background-color: #fff;
     z-index: 700;
     transition: all 1s ease;
-    box-shadow: 5px 5px 15px #ccc,
-    -5px -5px 15px #ccc;
+    box-shadow: 5px 5px 15px #ccc, -5px -5px 15px #ccc;
     &.shift {
       bottom: 10px;
     }
@@ -126,7 +140,7 @@ export default {
     }
     .details {
       height: calc(80vh - 40px);
-        overflow: auto;
+      overflow: auto;
       .comment {
         padding: 10px;
         .user {
@@ -170,7 +184,7 @@ export default {
           }
           .reply {
             font-size: 14px;
-            color: #888;
+            color: #888888;
             border: solid #f0eeee 1px;
             padding: 10px 7px;
           }

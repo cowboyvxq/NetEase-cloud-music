@@ -54,20 +54,20 @@ export default {
         }
         if (offsetX > maxScroll) {
           offsetX = maxScroll;
-          console.log(offsetX);
+          // console.log(offsetX);
           // 手指移动多少，就让icon移动icon标签跟着偏移多少
         }
         icon.style.transform = `translate(${offsetX}px,0)`;
         // 进度条可移动范围的百分比
         const progress = offsetX / maxScroll;
-        console.log(progress);
+        // console.log(progress);
         // 传值给外部
         this.$emit('input',progress);
       };
       const touchendCallback = (e) => {
         // x = offsetX; //记录当前次的移动值
         // 移除监听事件
-        console.log(e, x);
+        // console.log(e, x);
         document.removeEventListener("touchmove", touchmoveCallback);
         document.removeEventListener("touchend", touchendCallback);
       };

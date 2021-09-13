@@ -31,7 +31,7 @@
       />
     </svg>
     <!-- 光盘盒子 -->
-    <div class="compact-disc" @click="$emit('playingStatus')">
+    <div class="compact-disc" v-if="!showLyric" @click="showLyric = true">
       <!-- 播放摆动杆 -->
       <div class="play-bar">
         <img src="../assets/playbar.png" alt="" :class="{ play: playing }" />
@@ -54,7 +54,7 @@
       </div>
     </div>
     <!-- 歌词模块 -->
-    <section class="lyric" @click="showLyric = false" ref="lyric">
+    <section class="lyric" v-else @click="showLyric = false" ref="lyric">
       <ul
         class="content"
         ref="lyricContent"
@@ -308,11 +308,11 @@ export default {
   },
   data() {
     return {
-      lyricArr: null,
+      lyricArr: [],
       progress: 0.3,
       showPlayList: false,
       lisHeight: [],
-      showLyric: false,
+      showLyric: true,
       scrollHeight: 0,
       value: this.currentTime,
       inputing: false,
@@ -320,6 +320,7 @@ export default {
       pink: false,
       white: false,
       showcolor: false,
+      showdisc: false,
     };
   },
   created() {
@@ -364,7 +365,7 @@ export default {
   },
   computed: {
     parsedLyric: function () {
-      if (this.lyricArr) {
+      if (this.lyricArr.length != 0) {
         return this.lyricArr
           .split("\n")
           .filter((s) => s)
@@ -389,6 +390,7 @@ export default {
   },
   watch: {
     "currentSong.id": function (id) {
+      // this.lyricArr = [];
       this.getLyric(id);
     },
 
@@ -405,7 +407,7 @@ export default {
       }, 0);
       // console.log(h);
       high = high > 200 ? high - 200 : 0;
-      high = high > 1928 ? 1928 : high;
+      // high = high > 1928 ? 1928 : high;
       this.scrollHeight = high;
     },
     parsedLyric: function () {
@@ -461,13 +463,12 @@ export default {
     transform: scale(1.5);
   }
   .compact-disc {
-    height: 400px;
+    height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 587;
     position: relative;
-    display: none;
     .disc {
       width: 300px;
       height: 300px;
@@ -514,10 +515,10 @@ export default {
     // 播放摆动杆
     .play-bar {
       width: 84px;
-      height: 136px;
+      height: 145px;
       position: absolute;
       left: 50%;
-      top: -15px;
+      top: -2px;
       margin-left: -18px;
       margin-top: 7px;
       z-index: 999;
