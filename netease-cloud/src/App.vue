@@ -126,7 +126,7 @@
       enter-active-class="animate__animated animate__fadeIn"
       leave-active-class="animate__animated animate__fadeDown"
     >
-    <Video v-if="$route.path === '/home'" :state='state'></Video>
+    <Video v-if="$route.path === '/home'"></Video>
     </transition>
     <audio
       :src="currentSongUrl"
@@ -189,7 +189,6 @@ export default {
     Video,
   },
   data() {
-    const pause = this.$refs.audio;
     return {
       currentSong: null,
       playing: false,
@@ -202,7 +201,6 @@ export default {
       total: "00:00",
       // 当前播放的时间
       curTime: "00:00",
-      state:pause
     };
   },
   // 页面刷新时回到首页

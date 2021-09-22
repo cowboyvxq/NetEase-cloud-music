@@ -12,8 +12,8 @@
             <em v-if="item.fee == 8"></em>
             <span
               class="artist"
-              v-for="artist in item.artists"
-              :key="artist.id"
+              v-for="(artist, index) in item.artists"
+              :key="index"
             >
               {{ artist.name }}
             </span>

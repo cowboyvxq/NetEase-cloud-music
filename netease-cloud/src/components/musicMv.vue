@@ -175,12 +175,12 @@ export default {
   }
   .mv-mask {
     position: fixed;
-    width: 100vw;
+    width: 100vw;            
     height: 100vh;
     top: 0;
     left: 0;
     background-color: black;
-    z-index: 10;
+    z-index: 500;
     video {
       width: 100%;
       height: 300px;
