@@ -30,7 +30,7 @@
 
   <!-- 编辑推荐的歌单 -->
   <li
-    v-else
+    v-else-if="item.al"
     class="songs animate__animated animate__fadeIn"
     @click.stop="$emit('changeCurrent', item)"
   >
@@ -45,6 +45,38 @@
           {{ artist.name }}
         </i>
         <span class="artist">--&nbsp;&nbsp;{{ item.al.name }}</span>
+      </div>
+    </div>
+    <div class="icon">
+      <!-- current: currentId === item.id给当前音乐列表按钮添加动画 -->
+      <div
+        class="play"
+        :class="{ current: currentId === item.id, playing: playing }"
+      >
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+  </li>
+  <!-- 搜索结果列表 -->
+  <li
+    v-else
+    class="songs animate__animated animate__fadeIn"
+    @click.stop="$emit('changeCurrent', item)"
+  >
+    <div class="sequence">
+      <slot></slot>
+    </div>
+    <div class="left">
+      <div class="song-name">{{ item.name }}</div>
+      <div class="info">
+        <!-- <em v-if="item.fee == 8"></em> -->
+        <i class="artist">
+          {{ item.artists[0].name }}
+        </i>
+        <span class="artist">--&nbsp;&nbsp;{{ item.album.name }}</span>
       </div>
     </div>
     <div class="icon">

@@ -274,7 +274,7 @@
               v-for="(item, index) in playList"
               :key="item.id"
               :item="item"
-              :currentSongId="currentSong.id"
+              :currentId="currentSong.id"
               :playing="playing"
               @changeCurrent="$emit('changeCurrentSong', item)"
             >

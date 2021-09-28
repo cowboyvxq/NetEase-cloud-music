@@ -129,7 +129,7 @@
     <SearchSongList
       v-show="shows"
       :searchResults="searchResults"
-      @changeCurrent="$emit('changeCurrentSong', $event)"
+      @changeCurrent="$emit('changeCurrentSong', $event),$emit('change-play-list',searchResults)"
       :playing="playing"
       :currentSongId="currentSongId"
       @loadMore="loadMore"

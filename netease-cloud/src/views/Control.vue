@@ -23,7 +23,7 @@
             {{
               currentSong.song
                 ? currentSong.song.artists[0].name
-                :currentSong.al
+                : currentSong.al
                 ? currentSong.ar[0].name
                 : currentSong.artists[0].name
             }}
@@ -46,7 +46,7 @@
             xmlns="http://www.w3.org/2000/svg"
             width="35"
             height="35"
-            fill="#d43c33"
+            fill="#ccc"
             class="bi bi-music-note-list"
             viewBox="0 0 16 16"
           >
@@ -73,7 +73,7 @@
             v-for="(item, index) in playList"
             :key="item.id"
             :item="item"
-            :currentSongId="currentSong.id"
+            :currentId="currentSongId"
             :playing="playing"
             @changeCurrent="$emit('changeCurrentSong', item)"
             >{{ (index + 1).toString().padStart(2, "0") }}</NewestList
@@ -100,6 +100,7 @@ export default {
     duration: Number,
     currentTime: Number,
     playList: Array,
+    currentSongId: Number,
   },
   data() {
     return {
@@ -114,6 +115,10 @@ export default {
   watch: {
     progress(n) {
       var cxt = this.$refs.canvas.getContext("2d");
+      var width = this.$refs.canvas.offsetWidth;
+      var height = this.$refs.canvas.offsetHeight;
+      this.$refs.canvas.width = width;
+      this.$refs.canvas.height = height;
       cxt.clearRect(0, 0, 40, 40);
       // 开始新路径
       cxt.beginPath();
@@ -219,10 +224,8 @@ export default {
         position: relative;
         display: flex;
         justify-content: center;
-        align-items: center;
-        .canvas {
-          width: 100%;
-          height: 100%;
+        align-items: center;  
+        canvas {
           position: absolute;
           top: 0;
           left: 0;
