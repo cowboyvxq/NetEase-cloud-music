@@ -320,6 +320,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   padding-bottom: 54px;
+  box-sizing: border-box;
   .home {
     position: relative;
     padding-top: 125px;
