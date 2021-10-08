@@ -169,7 +169,7 @@ export default {
   },
   // 在组件创建的生命周期阶段发送axios请求
   created() {
-    this.axios.get("http://apis.netstart.cn/music/search/hot").then((res) => {
+    this.axios.get("https://apis.netstart.cn/music/search/hot").then((res) => {
       this.searchData = res.data.result.hots;
     });
   },
@@ -178,7 +178,7 @@ export default {
       // 当搜索框的值发生改变时发送axios请求
       // 获取搜索框输入时对应的数据
       this.axios
-        .get("http://apis.netstart.cn/music/search/suggest", {
+        .get("https://apis.netstart.cn/music/search/suggest", {
           params: {
             keywords,
             type: "mobile",

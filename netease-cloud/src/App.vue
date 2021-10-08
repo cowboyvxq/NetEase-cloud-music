@@ -119,12 +119,12 @@
       :currentSong="currentSong"
     ></router-view>
     <!-- 视频模块 -->
-    <transition
+    <!-- <transition
       enter-active-class="animate__animated animate__fadeIn"
       leave-active-class="animate__animated animate__fadeDown"
-    >
-      <Video v-if="$route.path === '/home'"></Video>
-    </transition>
+    > -->
+    <Video v-if="$route.path === '/home'"></Video>
+    <!-- </transition> -->
     <audio
       :src="currentSongUrl"
       class="control-strip"

@@ -68,7 +68,7 @@ export default {
   },
   created() {
     this.axios
-      .get("http://apis.netstart.cn/music/mv/exclusive/rcmd")
+      .get("https://apis.netstart.cn/music/mv/exclusive/rcmd")
       .then((res) => {
         this.mvlists = res.data.data;
         // console.log(this.mvlists);
@@ -78,7 +78,7 @@ export default {
     // 点击mv获取播放地址
     getMvUrl(id) {
       this.axios
-        .get("http://apis.netstart.cn/music/mv/url", {
+        .get("https://apis.netstart.cn/music/mv/url", {
           params: {
             id,
           },

@@ -54,7 +54,7 @@ export default {
     };
   },
   created() {
-    this.axios.get("http://apis.netstart.cn/music/mv/first").then((res) => {
+    this.axios.get("https://apis.netstart.cn/music/mv/first").then((res) => {
       this.vlist = res.data.data;
     });
   },
@@ -62,7 +62,7 @@ export default {
     // 点击mv获取播放地址
     playVideo(id) {
       this.axios
-        .get("http://apis.netstart.cn/music/mv/url", {
+        .get("https://apis.netstart.cn/music/mv/url", {
           params: {
             id,
           },

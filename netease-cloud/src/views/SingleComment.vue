@@ -79,7 +79,7 @@ export default {
   methods: {
     getComment(id) {
       this.axios
-        .get("http://apis.netstart.cn/music/comment/music", {
+        .get("https://apis.netstart.cn/music/comment/music", {
           params: {
             id,
           },

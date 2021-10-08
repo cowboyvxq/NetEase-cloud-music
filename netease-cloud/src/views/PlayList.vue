@@ -81,7 +81,7 @@ export default {
   methods: {
     getAjax(id) {
       this.axios
-        .get("http://apis.netstart.cn/music/playlist/detail", {
+        .get("https://apis.netstart.cn/music/playlist/detail", {
           params: {
             id,
           },

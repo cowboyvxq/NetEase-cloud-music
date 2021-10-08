@@ -49,7 +49,7 @@ export default {
   computed: {},
   created() {
     this.axios
-      .get("http://apis.netstart.cn/music/playlist/detail?id=3778678")
+      .get("https://apis.netstart.cn/music/playlist/detail?id=3778678")
       .then((res) => {
         this.hotDada = res.data.playlist.tracks;
         // console.log(res.data);

@@ -65,13 +65,13 @@ export default {
   created() {
     // 发起ajax 是因为 这里最早可以 访问this
     this.axios
-      .get("http://apis.netstart.cn/music/personalized?limit=6")
+      .get("https://apis.netstart.cn/music/personalized?limit=6")
       .then((res) => {
         this.dataArr = res.data.result;
       });
     // 获取最新音乐的数据
     this.axios
-      .get("http://apis.netstart.cn/music/personalized/newsong")
+      .get("https://apis.netstart.cn/music/personalized/newsong")
       .then((res) => {
         this.newRes = res.data.result;
         // console.log(res.data.result);
